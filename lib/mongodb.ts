@@ -32,3 +32,9 @@ export async function getDecksCollection() {
   const db = client.db(process.env.MONGODB_DB || "devcards");
   return db.collection("decks");
 }
+
+export async function getCardsCollection() {
+  const client = await getMongoClient();
+  const db = client.db(process.env.MONGODB_DB || "devcards");
+  return db.collection("cards");
+}

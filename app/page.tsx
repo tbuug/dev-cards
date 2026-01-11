@@ -34,15 +34,25 @@ export default function Home() {
       <h2 className="text-lg font-medium mb-4">Lista de decks</h2>
 
       <div className="flex flex-row gap-2 mb-6 ">
-        {values.map((deck, i) => (
-          <div key={deck._id ?? i} className="p-3 border rounded cursor-pointer hover:bg-gray-50 w-1/4">
-            <div className="font-semibold">{deck.name ?? "Untitled"}</div>
-            <div className="text-sm text-muted-foreground">{deck._id ?? "-"}</div>
-          </div>
-        ))}
+          {values.map((deck, i) => (
+            <div key={deck._id ?? i} className="p-3 border rounded flex-col items-center justify-between">
+              <div>
+                <div className="font-semibold">{deck.name ?? "Untitled"}</div>
+                <div className="text-sm text-muted-foreground">{deck._id ?? "-"}</div>
+              </div>
+              <div>
+                <Link href={`/decks/${deck._id}`}>
+                  <Button variant="outline" size="sm">Open</Button>
+                </Link>
+                <Link href={`/decks/add/${deck._id}`}>
+                  <Button variant="outline" size="sm">Add</Button>
+                </Link>
+              </div>
+            </div>
+          ))}
       </div>
 
-      <Button size="lg" aria-label="Submit">
+      <Button size="lg" aria-label="Submit" >
         <Link href="/deck" className="inline-flex items-center gap-2">
           <PlusCircle /> Create Deck
         </Link>
