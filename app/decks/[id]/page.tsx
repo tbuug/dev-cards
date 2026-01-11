@@ -1,4 +1,5 @@
-import { getDecksCollection } from "../../../lib/mongodb";
+import FoolPracticeButton from "@/components/FoolPracticeButton";
+import { getCardsCollection, getDecksCollection } from "../../../lib/mongodb";
 import { ObjectId } from "mongodb";
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
 export default async function DeckDetailPage({ params }: Props) {
   const { id } = await params;
   let deck: any = null;
+  let cards: any[] = [];
 
   try {
     const coll = await getDecksCollection();
@@ -15,6 +17,13 @@ export default async function DeckDetailPage({ params }: Props) {
   } catch (err) {
     console.error(err);
   }
+
+//   try {
+//     const coll = await getCardsCollection();
+//     cards = await coll.find({ deckId: new ObjectId(id) }).toArray();
+//   } catch (err) {
+//     console.error(err);
+//   }
 
   if (!deck) {
     return <div className="main-container p-6">Deck not found.</div>;
@@ -24,7 +33,9 @@ export default async function DeckDetailPage({ params }: Props) {
     <div className="main-container p-6">
       <h1 className="text-xl font-bold mb-2">{deck.name ?? "Untitled"}</h1>
       <div className="text-sm text-muted-foreground mb-4">ID: {deck._id.toString()}</div>
-      <pre className="bg-gray-50 p-4 rounded text-sm overflow-auto">{JSON.stringify(deck, null, 2)}</pre>
+    <FoolPracticeButton deckId={deck._id.toString()}/>
+
+      
     </div>
   );
 }
