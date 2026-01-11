@@ -8,6 +8,19 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     const id = resolved.id;
     const body = await request.json();
     const cardsColl = await getCardsCollection();
+    // Support bulk import: accept { cards: [...] } or a single card body
+    if (Array.isArray(body?.cards)) {
+      const cardDocs = body.cards.map((c: any) => ({
+        deckId: new ObjectId(id),
+        front: c.front ?? "",
+        back: c.back ?? "",
+        time: c.time ? new Date(c.time) : new Date(),
+        createdAt: new Date(),
+      }));
+      const result = await cardsColl.insertMany(cardDocs);
+      return NextResponse.json({ ok: true, insertedCount: result.insertedCount, insertedIds: result.insertedIds });
+    }
+
     const card = {
       deckId: new ObjectId(id),
       front: body.front,
