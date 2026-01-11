@@ -59,9 +59,9 @@ export default function SettingsPage() {
     <div className="main-container p-6">
       <h2 className="text-lg font-medium mb-4">Multipliers configurations</h2>
 
-      <div className="flex flex-col gap-4 max-w-md">
+      <div className="flex flex-col max-w-md">
         <label>Easy <span className="text-detail">(72h * {values.easy ?? 1} = {round(72*(values.easy ?? 1), 0)} horas)</span></label>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center">
           <Input
             type="number"
             step="any"
@@ -95,7 +95,7 @@ export default function SettingsPage() {
         </div>
 
         <label>Medium <span className="text-detail">(48h * {values.medium ?? 1} = {round(48*(values.medium ?? 1), 0)} horas)</span></label>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center">
           <Input
             type="number"
             step="any"
@@ -129,7 +129,7 @@ export default function SettingsPage() {
         </div>
 
         <label>Hard <span className="text-detail">(24h * {values.hard ?? 1} = {round(24*(values.hard ?? 1), 0)} horas)</span></label>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center">
           <Input
             type="number"
             step="any"
@@ -158,10 +158,10 @@ export default function SettingsPage() {
           </div>
         </div>
 
+      </div>
         <Button className="mt-4" onClick={handleSave} disabled={saving}>
           {saving ? "Saving..." : "Save"}
         </Button>
-      </div>
     </div>
   );
 }

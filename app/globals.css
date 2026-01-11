@@ -125,11 +125,10 @@
 }
 
 .main-container{
-  flex-direction: column;
-  align-items: center;
   width: 80%;
   margin: 0 auto;
   padding-top: 2rem;
+  text-align: center;
 }
 .text-detail {
   font-size: 12px;
