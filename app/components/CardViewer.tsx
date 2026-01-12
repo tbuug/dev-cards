@@ -119,7 +119,7 @@ export default function CardViewer({ cards }: CardViewerProps) {
             </div>
             <div style={{
                 width: '700px',
-                height: '200px',
+                height: '500px',
                 perspective: '1000px'
             }}>
                 <div style={{

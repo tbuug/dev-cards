@@ -15,7 +15,8 @@ export default async function FoolDeckPage({ params }: { params: Promise<{ id: s
     try {
         const coll = await getCardsCollection();
         const rawCards = await coll.find({ deckId: new ObjectId(deckId) }).toArray();
-        const cards: Card[] = rawCards.map(card => ({
+        const shuffledCards = [...rawCards].sort(() => Math.random() - 0.5);
+        const cards: Card[] = shuffledCards.map(card => ({
             _id: card._id.toString(),
             front: card.front,
             back: card.back,
