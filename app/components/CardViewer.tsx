@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import MarkdownContent from './Markdown';
 
 interface Card {
     _id: string;
@@ -146,8 +147,8 @@ export default function CardViewer({ cards }: CardViewerProps) {
                         padding: '20px',
                         textAlign: 'center'
                     }}>
-                        <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
-                            <p>{currentCard.front}</p>
+                        <div className="markdown-scope">
+                            <MarkdownContent content={currentCard.front} />
                         </div>
                         <button
                             onClick={handleFlip}
@@ -181,8 +182,8 @@ export default function CardViewer({ cards }: CardViewerProps) {
                         padding: '20px',
                         textAlign: 'center'
                     }}>
-                        <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
-                            <p>{currentCard.back}</p>
+                        <div className="markdown-scope">
+                            <MarkdownContent content={currentCard.back} />
                         </div>
                         <button
                             onClick={handleNext}
