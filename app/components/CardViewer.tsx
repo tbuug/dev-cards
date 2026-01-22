@@ -41,11 +41,11 @@ export default function CardViewer({ cards }: CardViewerProps) {
         return (
             <div style={{
                 position: 'fixed',
-                top: '80px',
+                top: '20px',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 width: '100%',
-                height: 'calc(100vh - 100px)',
+                height: 'calc(100vh - 30px)',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center'
@@ -119,8 +119,8 @@ export default function CardViewer({ cards }: CardViewerProps) {
                 }}></div>
             </div>
             <div style={{
-                width: '700px',
-                height: '500px',
+                width: '60%',
+                height: '80%',
                 perspective: '1000px'
             }}>
                 <div style={{
@@ -145,9 +145,18 @@ export default function CardViewer({ cards }: CardViewerProps) {
                         borderRadius: '10px',
                         boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
                         padding: '20px',
-                        textAlign: 'center'
+                        textAlign: 'center',
                     }}>
-                        <div className="markdown-scope">
+                        <div
+                            className="markdown-scope"
+                            style={{
+                                alignSelf: 'stretch',
+                                flex: 1,
+                                minHeight: 0,
+                                overflowY: 'auto',
+                                padding: '0 8px'
+                            }}
+                        >
                             <MarkdownContent content={currentCard.front} />
                         </div>
                         <button
@@ -182,7 +191,16 @@ export default function CardViewer({ cards }: CardViewerProps) {
                         padding: '20px',
                         textAlign: 'center'
                     }}>
-                        <div className="markdown-scope">
+                        <div
+                            className="markdown-scope"
+                            style={{
+                                alignSelf: 'stretch',
+                                flex: 1,
+                                minHeight: 0,
+                                overflowY: 'auto',
+                                padding: '0 8px'
+                            }}
+                        >
                             <MarkdownContent content={currentCard.back} />
                         </div>
                         <button

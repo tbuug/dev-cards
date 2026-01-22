@@ -14,11 +14,12 @@ export default function MarkdownContent({ content }: { content: string }) {
                     style={{
                         width: '100%',
                         overflowX: 'auto',
+                        overflowY: 'auto',
                         padding: '12px',
                         borderRadius: '6px',
                         background: '#f6f8fa',
                         textAlign: 'left',
-                        fontSize: '12px'
+                        fontSize: '20px'
                     }}
                     >
                     {children}
